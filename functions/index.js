@@ -34,7 +34,8 @@ exports.notifyNewMessage = functions.firestore
 
         //sync tokens inside
         // eslint-disable-next-line promise/no-nesting
-        return admin.messaging
+        return admin
+          .messaging()
           .sendToDevice(registrationTokens, payload)
           .then(response => {
             const stillRegisteredTokens = registrationTokens;
